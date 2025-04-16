@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hamutuk</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="auth-screen" id="auth-screen">
+    <h2>Masuk ke Hamutuk</h2>
+    <input type="email" id="auth-email" placeholder="Email" />
+    <input type="password" id="auth-password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <button onclick="register()">Daftar</button>
+    <p id="auth-error" class="error"></p>
+  </div>
+
+  <div class="app-container" id="chat-screen" style="display:none;">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Hamutuk</h2>
+        <button onclick="uploadStatus()" class="status-btn">+ Status</button>
+        <ul id="friend-list" class="friend-list"></ul>
+        <button onclick="logout()" class="logout">Keluar</button>
+      </div>
+    </aside>
+
+    <main class="chat-section">
+      <header class="chat-header">
+        <div class="user-info">
+          <img id="profile-img" src="default-avatar.png" class="avatar" />
+          <div>
+            <h3 id="username"></h3>
+            <a id="phone-link" href="#" class="phone-link">Hubungi</a>
+          </div>
+        </div>
+        <input type="file" id="upload-avatar" accept="image/*" hidden />
+      </header>
+
+      <div id="messages" class="messages"></div>
+
+      <form id="message-form" class="message-form">
+        <input type="text" id="message" placeholder="Tulis pesan..." required />
+        <button type="submit">Kirim</button>
+      </form>
+    </main>
+  </div>
+
+  <!-- Status Viewer -->
+  <div id="status-viewer" class="status-viewer" style="display:none;">
+    <div class="status-content">
+      <span id="close-status" onclick="closeStatus()" class="close-btn">&times;</span>
+      <div id="status-media"></div>
+    </div>
+  </div>
+
+  <!-- Input file untuk media -->
+  <input type="file" id="media-upload" accept="image/*,video/*" hidden />
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-storage-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
